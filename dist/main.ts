@@ -1,6 +1,6 @@
 
-let personData = [];
-let jsDOM = {
+var personData = [];
+var jsDOM = {
     data: {
         fname: document.getElementById('fname'),
         lname: document.getElementById('lname'),
@@ -15,7 +15,7 @@ let jsDOM = {
     personData: document.getElementById('personData')
 }
 
-let jsFunc = {
+var jsFunc = {
     myFunction : () => {
         jsDOM.fname.innerHTML = `First Name: ${jsDOM.fname.value}`;
         jsDOM.lname.innerHTML = `Last Name: ${jsDOM.lname.value}`;
@@ -26,21 +26,21 @@ let jsFunc = {
     },
     showData: () => {
         
-        let parentDiv = jsDOM.personData;
+        var parentDiv = jsDOM.personData;
         parentDiv.innerHTML = '';
 
-        let node = document.createElement("div");
-        let nodeHeader = document.createElement("h3");
-        let nodeHeaderText = document. createTextNode("Person Data");
+        var node = document.createElement("div");
+        var nodeHeader = document.createElement("h3");
+        var nodeHeaderText = document. createTextNode("Person Data");
         nodeHeader.appendChild(nodeHeaderText);
         node.appendChild(nodeHeader);
 
-        let fullname, email, phone;
+        var fullname, email, phone;
         
         personData.forEach (x => {
             fullname = `${x.fname} ${x.lname}`; email = x.email; phone = x.number;
-            let personData = document.createElement('p');
-            let personDataText= document.createTextNode(`Name: ${fullname} Email: ${email} Phone: ${phone}`);
+            var personData = document.createElement('p');
+            var personDataText= document.createTextNode(`Name: ${fullname} Email: ${email} Phone: ${phone}`);
             personData.appendChild(personDataText);
             node.appendChild(personData);
            
@@ -48,7 +48,7 @@ let jsFunc = {
         parentDiv.appendChild(node);
     },
     clearFields: () => {
-        Object.values(jsDOM.data).forEach(x => x.value = " ");
+        Object.values(jsDOM.data).forEach(function (x: { value: string; }) {return x.value = ""}); 
 
     },
     addData: () => {
